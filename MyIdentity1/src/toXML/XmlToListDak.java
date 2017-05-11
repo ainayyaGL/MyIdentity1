@@ -5,7 +5,7 @@
  */
 package toXML;
 
-import model.Keluarga;
+import model.Dakwah;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -25,26 +25,26 @@ import org.w3c.dom.Node;
  *
  * @author zain
  */
-public class xmlToList {
+public class XmlToListDak {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception{
         // TODO code application logic here
-        List <Keluarga> keluarga = new ArrayList ();
-        String NIK, Nama, jKel, pend, RootElemen, RowElemen;
+        List <Dakwah> dakwah = new ArrayList ();
+        String PeranDak, InstitusiDak, TglDak, RootElemen, RowElemen;
       
         
         
-       File fileXML = new File("keluarga.xml");
+       File fileXML = new File("dakwah.xml");
        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
        Document doc = dBuilder.parse(fileXML);
        doc.getDocumentElement().normalize();
        
        RootElemen = doc.getDocumentElement().getNodeName();
-       NodeList nList = doc.getElementsByTagName("Keluarga");
+       NodeList nList = doc.getElementsByTagName("Dakwah");
 
        for (int i = 0; i < nList.getLength(); i++) {
           Node nNode = nList.item(i);
@@ -52,11 +52,10 @@ public class xmlToList {
           System.out.println("\nCurrent Element :" + nNode.getNodeName());
           if (nNode.getNodeType() == Node.ELEMENT_NODE) {
              Element eElement = (Element) nNode;
-             NIK = eElement.getAttribute("NIK");
-             Nama = eElement.getElementsByTagName("Nama").item(0).getTextContent();
-             jKel = eElement.getElementsByTagName("JenisKelamin").item(0).getTextContent();
-             pend = eElement.getElementsByTagName("Pendidikan").item(0).getTextContent();            
-            keluarga.add(new Keluarga(NIK, Nama, jKel, pend));
+             PeranDak = eElement.getAttribute("PeranDakwah");
+             InstitusiDak = eElement.getElementsByTagName("InstitusiDakwah").item(0).getTextContent();
+             TglDak = eElement.getElementsByTagName("PeranDakwah").item(0).getTextContent();
+             dakwah.add(new Dakwah(PeranDak, InstitusiDak, TglDak));
           }
        }
     }

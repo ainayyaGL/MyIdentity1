@@ -5,7 +5,7 @@
  */
 package toXML;
 
-import model.Keluarga;
+import model.Dakwah;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -24,49 +24,44 @@ import org.w3c.dom.Element;
  *
  * @author zain
  */
-public class listToXML {
+public class ListToXMLDak {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception{
         // TODO code application logic here
-        List <Keluarga> kel = new ArrayList ();
-        kel.add(new Keluarga("17529001","A", "P","S1"));
-        kel.add(new Keluarga("17529001","B", "P","S1"));
-        kel.add(new Keluarga("17529001","C", "P","S1"));
-        kel.add(new Keluarga("17529001","D", "P","S1"));
-        kel.add(new Keluarga("17529001","E", "L", "S1"));
+        List <Dakwah> dakwahDosen = new ArrayList ();
+        dakwahDosen.add(new Dakwah("A","A", "2010"));
+        dakwahDosen.add(new Dakwah("B","B", "2011"));
+        dakwahDosen.add(new Dakwah("C","C", "2012"));
+        
 
        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
        DocumentBuilder builder = factory.newDocumentBuilder();
        Document doc = builder.newDocument();
        doc.setXmlStandalone(true);
-       Element rootElement = doc.createElement("keluarga");
+       Element rootElement = doc.createElement("Dakwah");
        doc.appendChild(rootElement);
        
-       for(int i=0; i<kel.size();i++){
-           Element elemen_keluarga = doc.createElement("Keluarga");
-           elemen_keluarga.setAttribute("NIK", ""+kel.get(i).getNik());
-           rootElement.appendChild(elemen_keluarga);
+       for(int i=0; i<dakwahDosen.size();i++){
+           Element elemen_dakwah = doc.createElement("DakwahDosen");
+           elemen_dakwah.setAttribute("PeranDakwah", ""+dakwahDosen.get(i).getPeran());
+           rootElement.appendChild(elemen_dakwah);
            
-           Element fieldNama = doc.createElement("Nama");
-           fieldNama.setTextContent(kel.get(i).getNama());
-           elemen_keluarga.appendChild(fieldNama);
+           Element fieldDakwah = doc.createElement("InstitusiDakwah");
+           fieldDakwah.setTextContent(dakwahDosen.get(i).getInstitusi());
+           elemen_dakwah.appendChild(fieldDakwah);
            
-           Element fieldJkel = doc.createElement("JenisKelamin");
-           fieldJkel.setTextContent(kel.get(i).getjKel().toString());
-           elemen_keluarga.appendChild(fieldJkel);
-           
-           Element fieldPend = doc.createElement("Pendidikan");
-           fieldPend.setTextContent(kel.get(i).getPend().toString());
-           elemen_keluarga.appendChild(fieldPend);
+           Element fieldDwh = doc.createElement("Tanggal");
+           fieldDwh.setTextContent(dakwahDosen.get(i).getTglDak());
+           elemen_dakwah.appendChild(fieldDwh);
        }
        
        TransformerFactory transformerFactory = TransformerFactory.newInstance();
        Transformer transformer = transformerFactory.newTransformer();
        DOMSource dom = new DOMSource(doc);
-       StreamResult result = new StreamResult(new File("keluarga.xml"));
+       StreamResult result = new StreamResult(new File("dakwah.xml"));
        transformer.transform(dom, result);
     }
 }
