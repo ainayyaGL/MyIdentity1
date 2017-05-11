@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="477.0" prefWidth="505.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="myidentity1.FXMLDocumentController">
+   <children>
+      <Label layoutX="162.0" layoutY="116.0" text="My Identity">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Group fx:id="g1" layoutX="54.0" layoutY="260.0" visible="false">
+         <children>
+            <Label text="Username" />
+            <Label layoutX="2.0" layoutY="48.0" text="Password" />
+            <TextField fx:id="tfUserAd" layoutY="17.0" />
+            <PasswordField fx:id="tfPassAd" layoutY="65.0" />
+            <Button fx:id="btSignInAd" layoutX="97.0" layoutY="102.0" mnemonicParsing="false" onAction="#SignInAdminOnClick" text="Masuk" />
+         </children>
+      </Group>
+      <Group fx:id="g2" layoutX="307.0" layoutY="260.0" visible="false">
+         <children>
+            <TextField fx:id="tfUserCo" layoutY="17.0" />
+            <PasswordField fx:id="tfPassCo" layoutY="65.0" />
+            <Label text="Username" />
+            <Label layoutX="2.0" layoutY="48.0" text="Password" />
+            <Button fx:id="btSignInCo" layoutX="98.0" layoutY="108.0" mnemonicParsing="false" text="Masuk" />
+         </children>
+      </Group>
+      <Button fx:id="btAdmin" layoutX="80.0" layoutY="214.0" mnemonicParsing="false" onAction="#AdminOnClick" text="Admin" />
+      <Button fx:id="btCoAdmin" layoutX="356.0" layoutY="214.0" mnemonicParsing="false" onAction="#CoAdminOnClick" text="Co-Admin" />
+      <Label fx:id="label" layoutX="225.0" layoutY="394.0" />
+   </children>
+</AnchorPane>
