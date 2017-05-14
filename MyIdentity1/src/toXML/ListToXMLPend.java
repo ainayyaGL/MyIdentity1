@@ -32,9 +32,9 @@ public class ListToXMLPend {
     public static void main(String[] args) throws Exception{
         // TODO code application logic here
         List <Pendidikan> daftarPendidikan = new ArrayList ();
-        daftarPendidikan.add(new Pendidikan("1", "S1","UII", "2009"));
-        daftarPendidikan.add(new Pendidikan("2", "S2","UGM", "1998"));
-        daftarPendidikan.add(new Pendidikan("3", "S1","ITB", "2005"));
+        daftarPendidikan.add(new Pendidikan("123","1", "S1","UII", "2009"));
+        daftarPendidikan.add(new Pendidikan("134","2", "S2","UGM", "1998"));
+        daftarPendidikan.add(new Pendidikan("145","3", "S1","ITB", "2005"));
         
 
        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -46,7 +46,7 @@ public class ListToXMLPend {
        
        for(int i=0; i<daftarPendidikan.size();i++){
            Element elemen_pendidikan = doc.createElement("TabelPendidikan");
-           elemen_pendidikan.removeAttribute("");
+           elemen_pendidikan.setAttribute("NIK",""+daftarPendidikan.get(i).getNik());
            rootElement.appendChild(elemen_pendidikan);
            
            Element fieldNo = doc.createElement("No");

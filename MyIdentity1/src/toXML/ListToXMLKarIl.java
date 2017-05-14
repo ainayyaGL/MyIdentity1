@@ -32,9 +32,9 @@ public class ListToXMLKarIl {
     public static void main(String[] args) throws Exception{
         // TODO code application logic here
         List <KaryaIlmiah> daftarPenelitian = new ArrayList ();
-        daftarPenelitian.add(new KaryaIlmiah("1", "Anak Sholeh","Analis", "UII", "Bank", "1.000.000", "2013"));
-        daftarPenelitian.add(new KaryaIlmiah("2", "Sudah Pasti","Designer", "UII", "Bank", "3.000.000", "2014"));
-        daftarPenelitian.add(new KaryaIlmiah("3", "Masuk Surga","Tester", "UII", "Bank", "5.000.000", "2015"));
+        daftarPenelitian.add(new KaryaIlmiah("123","1", "Anak Sholeh","Analis", "UII", "Bank", "1.000.000", "2013"));
+        daftarPenelitian.add(new KaryaIlmiah("234","2", "Sudah Pasti","Designer", "UII", "Bank", "3.000.000", "2014"));
+        daftarPenelitian.add(new KaryaIlmiah("145","3", "Masuk Surga","Tester", "UII", "Bank", "5.000.000", "2015"));
         
 
        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -46,7 +46,7 @@ public class ListToXMLKarIl {
        
        for(int i=0; i<daftarPenelitian.size();i++){
            Element elemen_penelitian = doc.createElement("TabelPenelitian");
-           elemen_penelitian.removeAttribute("");
+           elemen_penelitian.setAttribute("NIK",""+daftarPenelitian.get(i).getNIK());
            rootElement.appendChild(elemen_penelitian);
            
            Element fieldNo = doc.createElement("No");

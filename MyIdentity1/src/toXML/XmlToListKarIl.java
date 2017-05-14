@@ -33,7 +33,7 @@ public class XmlToListKarIl {
     public static void main(String[] args) throws Exception{
         // TODO code application logic here
         List <KaryaIlmiah> daftarPenelitian = new ArrayList ();
-        String No, Judul, Peran, Institusi, sumberDana, nilaiDana, 
+        String nik, No, Judul, Peran, Institusi, sumberDana, nilaiDana, 
                 tahunPen, RootElemen, RowElemen;
     
         
@@ -52,6 +52,7 @@ public class XmlToListKarIl {
           if (nNode.getNodeType() == Node.ELEMENT_NODE) {
              Element eElement = (Element) nNode;
              
+             nik = eElement.getAttribute("NIK");
              No = eElement.getElementsByTagName("No").item(0).getTextContent();
              Judul = eElement.getElementsByTagName("JudulPenelitian").item(0).getTextContent();
              Peran = eElement.getElementsByTagName("PeranPenelitian").item(0).getTextContent();
@@ -59,7 +60,7 @@ public class XmlToListKarIl {
              sumberDana = eElement.getElementsByTagName("SumberDana").item(0).getTextContent();
              nilaiDana = eElement.getElementsByTagName("NilaiDana").item(0).getTextContent();
              tahunPen = eElement.getElementsByTagName("TahunPenelitian").item(0).getTextContent();
-             daftarPenelitian.add(new KaryaIlmiah(No, Judul, Peran, Institusi, sumberDana,
+             daftarPenelitian.add(new KaryaIlmiah(nik, No, Judul, Peran, Institusi, sumberDana,
                      nilaiDana, tahunPen));
           }
        }

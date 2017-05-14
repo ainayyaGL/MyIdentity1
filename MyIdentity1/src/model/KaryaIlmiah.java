@@ -10,6 +10,7 @@ package model;
  * @author user
  */
 public class KaryaIlmiah { 
+    String nik = null;
     String No = null;
     String Judul = null;
     String Peran = null;
@@ -18,8 +19,9 @@ public class KaryaIlmiah {
     String nilaiDana = null;
     String tahunPen = null;
 
-    public KaryaIlmiah(String no, String judul, String peran, String inst,
+    public KaryaIlmiah(String NIK, String no, String judul, String peran, String inst,
             String sDana, String nDana, String tahun) {
+        nik = NIK;
         No = no;
         Judul = judul;
         Peran = peran;
@@ -29,6 +31,9 @@ public class KaryaIlmiah {
         tahunPen = tahun;
     }
 
+    public String getNIK(){
+     return nik;   
+    }
     public String getNo() {
         return No;
     }

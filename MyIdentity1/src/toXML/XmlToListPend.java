@@ -33,7 +33,7 @@ public class XmlToListPend {
     public static void main(String[] args) throws Exception{
         // TODO code application logic here
         List <Pendidikan> daftarPendidikan = new ArrayList ();
-        String No, Pendidikan, Intitusi, thnLulus, RootElemen, RowElemen;
+        String nik, No, Pendidikan, Intitusi, thnLulus, RootElemen, RowElemen;
     
         
        File fileXML = new File("pendidikan.xml");
@@ -52,10 +52,11 @@ public class XmlToListPend {
              Element eElement = (Element) nNode;
              
              No = eElement.getElementsByTagName("No").item(0).getTextContent();
+             nik = eElement.getAttribute("NIK");
              Pendidikan = eElement.getElementsByTagName("Pendidikan").item(0).getTextContent();
              Intitusi = eElement.getElementsByTagName("Intitusi").item(0).getTextContent();
              thnLulus = eElement.getElementsByTagName("Tahun Lulus").item(0).getTextContent();
-             daftarPendidikan.add(new Pendidikan(No, Pendidikan, Intitusi, thnLulus));
+             daftarPendidikan.add(new Pendidikan(No,nik, Pendidikan, Intitusi, thnLulus));
           }
        }
     }    

@@ -10,19 +10,24 @@ package model;
  * @author Amalia Citra
  */
 public class Penunjang {
+    String nik = null;
     String KegPen = null;
     String PeranPen = null;
     String InstPen = null;
     String TglPen = null;
     
-     public Penunjang(String _KegPen, String _PeranPen, String _InstPen, String _TglPen )
-    {
+     public Penunjang(String _nik, String _KegPen, String _PeranPen, String _InstPen, String _TglPen )
+     {
+        this.nik = _nik;
         this.KegPen = _KegPen;
         this.PeranPen = _PeranPen;
         this.InstPen = _InstPen;
         this.TglPen = _TglPen;
     }
 
+     public String getNIK(){
+         return nik;
+     }
     public String getKegPen() {
         return KegPen;
     }

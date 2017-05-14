@@ -10,17 +10,22 @@ package model;
  * @author zain
  */
 public class Dakwah {
+    String nik = null;
     String PeranDak = null;
     String InstitusiDak = null;
     String TglDak = null;
     
-    public Dakwah(String _perandak, String _instdak, String _tgldak)
+    public Dakwah(String _nik, String _perandak, String _instdak, String _tgldak)
     {
+        this.nik = _nik;
         this.PeranDak = _perandak;
         this.InstitusiDak = _instdak;
         this.TglDak = _tgldak;
     }
     
+    public String getNIK(){
+        return nik;
+    }
     public String getPeran()
     {
         return PeranDak;

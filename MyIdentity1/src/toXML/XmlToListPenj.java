@@ -33,7 +33,7 @@ public class XmlToListPenj {
     public static void main(String[] args) throws Exception{
         // TODO code application logic here
         List <Penunjang> penunjang = new ArrayList ();
-        String KegPen, PeranPen, InstPen, TglPen, RootElemen, RowElemen;
+        String nik, KegPen, PeranPen, InstPen, TglPen, RootElemen, RowElemen;
     
         
         
@@ -52,11 +52,12 @@ public class XmlToListPenj {
           System.out.println("\nCurrent Element :" + nNode.getNodeName());
           if (nNode.getNodeType() == Node.ELEMENT_NODE) {
              Element eElement = (Element) nNode;
-             KegPen = eElement.getAttribute("Kegiatan");
+             nik = eElement.getAttribute("NIM");
+             KegPen = eElement.getElementsByTagName("Kegiatan").item(0).getTextContent();
              PeranPen = eElement.getElementsByTagName("Peran").item(0).getTextContent();
              InstPen = eElement.getElementsByTagName("Institusi").item(0).getTextContent();
              TglPen = eElement.getElementsByTagName("Tanggal").item(0).getTextContent();
-             penunjang.add(new Penunjang(KegPen, PeranPen, InstPen, TglPen));
+             penunjang.add(new Penunjang(nik,KegPen, PeranPen, InstPen, TglPen));
           }
        }
     }
