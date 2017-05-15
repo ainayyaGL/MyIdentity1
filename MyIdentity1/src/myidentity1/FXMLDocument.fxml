@@ -4,37 +4,198 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="477.0" prefWidth="505.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="myidentity1.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="477.0" prefWidth="505.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myidentity1.FXMLDocumentController">
    <children>
-      <Label layoutX="162.0" layoutY="116.0" text="My Identity">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Label>
-      <Group fx:id="g1" layoutX="54.0" layoutY="260.0" visible="false">
+      <AnchorPane fx:id="loginForm" layoutX="54.0" layoutY="116.0">
          <children>
-            <Label text="Username" />
-            <Label layoutX="2.0" layoutY="48.0" text="Password" />
-            <TextField fx:id="tfUserAd" layoutY="17.0" />
-            <PasswordField fx:id="tfPassAd" layoutY="65.0" />
-            <Button fx:id="btSignInAd" layoutX="97.0" layoutY="102.0" mnemonicParsing="false" onAction="#SignInAdminOnClick" text="Masuk" />
+            <Label layoutX="108.0" text="My Identity">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Group fx:id="g1" layoutY="144.0" visible="false">
+               <children>
+                  <Label text="Username" />
+                  <Label layoutX="2.0" layoutY="48.0" text="Password" />
+                  <TextField fx:id="tfUserAd" layoutY="17.0" />
+                  <PasswordField fx:id="tfPassAd" layoutY="65.0" />
+                  <Button fx:id="btSignInAd" layoutX="97.0" layoutY="102.0" mnemonicParsing="false" onAction="#SignInAdminOnClick" text="Masuk" />
+               </children>
+            </Group>
+            <Group fx:id="g2" layoutX="253.0" layoutY="144.0" visible="false">
+               <children>
+                  <TextField fx:id="tfUserCo" layoutY="17.0" />
+                  <PasswordField fx:id="tfPassCo" layoutY="65.0" />
+                  <Label text="Username" />
+                  <Label layoutX="2.0" layoutY="48.0" text="Password" />
+                  <Button fx:id="btSignInCo" layoutX="98.0" layoutY="108.0" mnemonicParsing="false" text="Masuk" />
+               </children>
+            </Group>
+            <Button fx:id="btAdmin" layoutX="26.0" layoutY="98.0" mnemonicParsing="false" onAction="#AdminOnClick" text="Admin" />
+            <Button fx:id="btCoAdmin" layoutX="302.0" layoutY="98.0" mnemonicParsing="false" onAction="#CoAdminOnClick" text="Co-Admin" />
+            <Label fx:id="label" layoutX="171.0" layoutY="278.0" />
+            <Button fx:id="go" layoutX="173.0" layoutY="314.0" mnemonicParsing="false" onAction="#goOnClick" text="Go" visible="false" />
          </children>
-      </Group>
-      <Group fx:id="g2" layoutX="307.0" layoutY="260.0" visible="false">
+      </AnchorPane>
+      <AnchorPane fx:id="menuUtama" prefHeight="477.0" prefWidth="505.0" visible="false">
          <children>
-            <TextField fx:id="tfUserCo" layoutY="17.0" />
-            <PasswordField fx:id="tfPassCo" layoutY="65.0" />
-            <Label text="Username" />
-            <Label layoutX="2.0" layoutY="48.0" text="Password" />
-            <Button fx:id="btSignInCo" layoutX="98.0" layoutY="108.0" mnemonicParsing="false" text="Masuk" />
+            <Label layoutX="46.0" layoutY="46.0" text="Menu Utama">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <Button fx:id="btDosen" alignment="TOP_LEFT" layoutX="46.0" layoutY="133.0" mnemonicParsing="false" onAction="#DosenOnClick" prefHeight="25.0" prefWidth="127.0" text="1. Dosen">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="btKaryawan" alignment="TOP_LEFT" layoutX="46.0" layoutY="189.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="2. Karyawan">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="keluar" layoutX="26.0" layoutY="425.0" mnemonicParsing="false" onAction="#keluar" text="Keluar" />
          </children>
-      </Group>
-      <Button fx:id="btAdmin" layoutX="80.0" layoutY="214.0" mnemonicParsing="false" onAction="#AdminOnClick" text="Admin" />
-      <Button fx:id="btCoAdmin" layoutX="356.0" layoutY="214.0" mnemonicParsing="false" onAction="#CoAdminOnClick" text="Co-Admin" />
-      <Label fx:id="label" layoutX="225.0" layoutY="394.0" />
+      </AnchorPane>
+      <AnchorPane fx:id="JurusanList" prefHeight="477.0" prefWidth="505.0" visible="false">
+         <children>
+            <Label layoutX="36.0" layoutY="50.0" text="Jurusan">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
+            <Button layoutX="49.0" layoutY="136.0" mnemonicParsing="false" text="Teknik Elektro" />
+            <Button layoutX="107.0" layoutY="273.0" mnemonicParsing="false" text="Teknik Kimia" />
+            <Button layoutX="351.0" layoutY="136.0" mnemonicParsing="false" onAction="#TIFonCLick" text="Teknik Informatika" />
+            <Button layoutX="206.0" layoutY="136.0" mnemonicParsing="false" text="Teknik Industri" />
+            <Button layoutX="310.0" layoutY="273.0" mnemonicParsing="false" text="Teknik Mesin" />
+            <Button fx:id="btKembaliJ" layoutX="20.0" layoutY="438.0" mnemonicParsing="false" onAction="#backJurusan" text="Kembali" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="MenuTampil" prefHeight="477.0" prefWidth="505.0" visible="false">
+         <children>
+            <Label layoutX="26.0" layoutY="47.0" text="Menu Tampil">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Button alignment="TOP_LEFT" layoutX="26.0" layoutY="158.0" mnemonicParsing="false" onAction="#tampilkanDataOnClick" prefHeight="38.0" prefWidth="178.0" text="1. Tampilkan Data">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutX="26.0" layoutY="220.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="178.0" text="2. Tampilkan Status">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="btKembaliMenuT" layoutX="26.0" layoutY="415.0" mnemonicParsing="false" onAction="#backMenuTampil" text="Kembali" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="DataList" prefHeight="477.0" prefWidth="505.0" visible="false">
+         <children>
+            <Label layoutX="37.0" layoutY="41.0" prefWidth="104.0" text="Dosen">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+            <Button fx:id="btTambah" layoutX="415.0" layoutY="115.0" mnemonicParsing="false" onAction="#tambahOnClick" text="tambah" />
+            <Button fx:id="btLihat" layoutX="415.0" layoutY="226.0" mnemonicParsing="false" text="lihat" />
+            <Button fx:id="btKembaliDataDL" layoutX="25.0" layoutY="425.0" mnemonicParsing="false" onAction="#backDataD" text="kembali" />
+            <TableView layoutX="25.0" layoutY="174.0" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="DataDiriForm" prefHeight="523.0" prefWidth="511.0" visible="false">
+         <children>
+            <Label layoutX="209.0" layoutY="14.0" text="Biodata">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="54.0" text="A. Identitas Dosen" />
+            <GridPane layoutX="21.0" layoutY="84.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="15.0" prefWidth="150.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="1. Nama" />
+                  <Label text="2. NIK" GridPane.rowIndex="1" />
+                  <Label text="3. Tempat Lahir " GridPane.rowIndex="2" />
+                  <Label text="4. Tanggal Lahir" GridPane.rowIndex="3" />
+                  <Label text="5. Jenis Kelamin" GridPane.rowIndex="4" />
+                  <Label text="6. Agama" GridPane.rowIndex="5" />
+                  <Label text="7. Status Pernikahan" GridPane.rowIndex="6" />
+                  <Label text="16. Telepon" GridPane.rowIndex="15" />
+                  <Label text="15. Jab Struktural" GridPane.rowIndex="14" />
+                  <Label text="14. Jab Fngsional" GridPane.rowIndex="13" />
+                  <Label text="13. Jurusan" GridPane.rowIndex="12" />
+                  <Label text="12. Fakultas" GridPane.rowIndex="11" />
+                  <Label prefHeight="18.0" prefWidth="107.0" text="11. Status Dosen" GridPane.rowIndex="10" />
+                  <Label text="10. Terhitung Mulai" GridPane.rowIndex="9" />
+                  <Label text="9. Golongan/Pangkat" GridPane.rowIndex="8" />
+                  <Label text="8. Pendidikan Tertinggi" GridPane.rowIndex="7" />
+                  <Label text="17. No HP" GridPane.rowIndex="16" />
+                  <Label text="18. Email" GridPane.rowIndex="17" />
+                  <Label text="19. Alamat" GridPane.rowIndex="18" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="18" />
+                  <TextField prefHeight="19.0" prefWidth="200.0" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <Button fx:id="btKembaliDDF" layoutX="21.0" layoutY="478.0" mnemonicParsing="false" onAction="#backDDF" text="Kembali" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
