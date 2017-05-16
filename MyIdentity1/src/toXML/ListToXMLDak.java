@@ -10,6 +10,8 @@ import model.Dakwah;
 import java.util.List;
 import java.util.ArrayList;
 
+import java.time.LocalDate;
+
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -32,9 +34,9 @@ public class ListToXMLDak {
     public static void main(String[] args) throws Exception{
         // TODO code application logic here
         List <Dakwah> dakwahDosen = new ArrayList ();
-        dakwahDosen.add(new Dakwah("123","A","A", "2010"));
-        dakwahDosen.add(new Dakwah("145","B","B", "2011"));
-        dakwahDosen.add(new Dakwah("234","C","C", "2012"));
+        dakwahDosen.add(new Dakwah("123","A","A", LocalDate.parse("2010-10-02")));
+        dakwahDosen.add(new Dakwah("145","B","B", LocalDate.parse("2011-09-12")));
+        dakwahDosen.add(new Dakwah("234","C","C", LocalDate.parse("2012-08-13")));
         
 
        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -58,7 +60,7 @@ public class ListToXMLDak {
            elemen_dakwah.appendChild(fieldDakwah);
            
            Element fieldDwh = doc.createElement("Tanggal");
-           fieldDwh.setTextContent(dakwahDosen.get(i).getTglDak());
+           fieldDwh.setTextContent(dakwahDosen.get(i).getTglDak().toString());
            elemen_dakwah.appendChild(fieldDwh);
        }
        

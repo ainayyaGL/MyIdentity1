@@ -9,6 +9,8 @@ import model.Pengabdian;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.time.LocalDate;
 
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
@@ -33,8 +35,8 @@ public class XmlToListPeng {
     public static void main(String[] args) throws Exception{
         // TODO code application logic here
         List <Pengabdian> pengabdian = new ArrayList ();
-        String nik, PeranPeng,InstPeng, TglPeng, RootElemen, RowElemen;
-        
+        String nik, PeranPeng,InstPeng,strTgl, RootElemen, RowElemen;
+        LocalDate TglPeng;
         
         
        File fileXML = new File("pengabdian.xml");
@@ -55,7 +57,8 @@ public class XmlToListPeng {
              nik = eElement.getAttribute("NIK");
              PeranPeng = eElement.getElementsByTagName("Peran").item(0).getTextContent();
              InstPeng = eElement.getElementsByTagName("Institusi").item(0).getTextContent();
-             TglPeng = eElement.getElementsByTagName("Tanggal").item(0).getTextContent();
+             strTgl = eElement.getElementsByTagName("Tanggal").item(0).getTextContent();
+             TglPeng = LocalDate.parse(strTgl);
              pengabdian.add(new Pengabdian(nik, PeranPeng, InstPeng, TglPeng));
           }
        }

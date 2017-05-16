@@ -10,6 +10,8 @@ import model.Pengabdian;
 import java.util.List;
 import java.util.ArrayList;
 
+import java.time.LocalDate;
+
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -32,9 +34,9 @@ public class ListToXMLPeng {
     public static void main(String[] args) throws Exception{
         // TODO code application logic here
         List <Pengabdian> pengabdian = new ArrayList ();
-        pengabdian.add(new Pengabdian("17529001","A","A", "1"));
-        pengabdian.add(new Pengabdian("17529002","B","B", "2"));
-        pengabdian.add(new Pengabdian("17529003","C","C","3"));
+        pengabdian.add(new Pengabdian("17529001","A","A", LocalDate.parse("2010-01-01")));
+        pengabdian.add(new Pengabdian("17529002","B","B", LocalDate.parse("2011-01-01")));
+        pengabdian.add(new Pengabdian("17529003","C","C",LocalDate.parse("2012-01-01")));
         
 
        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -58,7 +60,7 @@ public class ListToXMLPeng {
            elemen_pengabdian.appendChild(fieldInst);
            
            Element fieldTgl = doc.createElement("Tanggal");
-           fieldTgl.setTextContent(pengabdian.get(i).getTglPeng());
+           fieldTgl.setTextContent(pengabdian.get(i).getTglPeng().toString());
            elemen_pengabdian.appendChild(fieldTgl);
        }
        

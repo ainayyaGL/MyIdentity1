@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author zain
@@ -13,9 +15,9 @@ public class Dakwah {
     String nik = null;
     String PeranDak = null;
     String InstitusiDak = null;
-    String TglDak = null;
+    LocalDate TglDak = LocalDate.parse("0000-01-01");
     
-    public Dakwah(String _nik, String _perandak, String _instdak, String _tgldak)
+    public Dakwah(String _nik, String _perandak, String _instdak, LocalDate _tgldak)
     {
         this.nik = _nik;
         this.PeranDak = _perandak;
@@ -34,7 +36,7 @@ public class Dakwah {
     {
         return InstitusiDak;
     }
-      public String getTglDak()
+      public LocalDate getTglDak()
     {
         return TglDak;
     }

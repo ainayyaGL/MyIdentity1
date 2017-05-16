@@ -5,6 +5,9 @@
  */
 package model;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author zain
@@ -13,9 +16,9 @@ public class Pengabdian {
     String nik = null; 
     String PeranPeng = null;
     String InstPeng = null;
-    String TglPeng = null;
+    LocalDate TglPeng = LocalDate.parse("0000-01-01");
     
-    public Pengabdian(String _nik, String _peranpeng, String _instpeng, String _tglpeng)
+    public Pengabdian(String _nik, String _peranpeng, String _instpeng, LocalDate _tglpeng)
     {
         this.nik = _nik;
         this.PeranPeng = _peranpeng;
@@ -34,7 +37,7 @@ public class Pengabdian {
     {
         return InstPeng;
     }
-      public String getTglPeng()
+      public LocalDate getTglPeng()
     {
         return TglPeng;
     }

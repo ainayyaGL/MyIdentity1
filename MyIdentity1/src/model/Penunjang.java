@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Amalia Citra
@@ -14,9 +16,9 @@ public class Penunjang {
     String KegPen = null;
     String PeranPen = null;
     String InstPen = null;
-    String TglPen = null;
+    LocalDate TglPen = LocalDate.parse("0000-01-01");
     
-     public Penunjang(String _nik, String _KegPen, String _PeranPen, String _InstPen, String _TglPen )
+     public Penunjang(String _nik, String _KegPen, String _PeranPen, String _InstPen, LocalDate _TglPen )
      {
         this.nik = _nik;
         this.KegPen = _KegPen;
@@ -40,7 +42,7 @@ public class Penunjang {
         return InstPen;
     }
 
-    public String getTglPen() {
+    public LocalDate getTglPen() {
         return TglPen;
     }
 }

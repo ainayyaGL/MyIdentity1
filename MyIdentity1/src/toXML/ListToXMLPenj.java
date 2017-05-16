@@ -10,6 +10,8 @@ import model.Penunjang;
 import java.util.List;
 import java.util.ArrayList;
 
+import java.time.LocalDate;
+
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -32,9 +34,9 @@ public class ListToXMLPenj {
     public static void main(String[] args) throws Exception{
         // TODO code application logic here
         List <Penunjang> penunjang = new ArrayList ();
-        penunjang.add(new Penunjang("123","Ngajar","Dosen", "UII", "2010"));
-        penunjang.add(new Penunjang("145","Mengisi kajian","Ustadz", "Masjid Ulil Albab", "2010"));
-        penunjang.add(new Penunjang("146","Baksos","Relawan", "Desa Sukamaju", "2015"));
+        penunjang.add(new Penunjang("123","Ngajar","Dosen", "UII", LocalDate.parse("2010-01-01")));
+        penunjang.add(new Penunjang("145","Mengisi kajian","Ustadz", "Masjid Ulil Albab", LocalDate.parse("2011-01-01")));
+        penunjang.add(new Penunjang("146","Baksos","Relawan", "Desa Sukamaju", LocalDate.parse("2012-01-01")));
         
 
        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -62,7 +64,7 @@ public class ListToXMLPenj {
            elemen_penunjang.appendChild(fieldInst);
            
            Element fieldTgl = doc.createElement("Tanggal");
-           fieldTgl.setTextContent(penunjang.get(i).getTglPen());
+           fieldTgl.setTextContent(penunjang.get(i).getTglPen().toString());
            elemen_penunjang.appendChild(fieldTgl);
        }
        
