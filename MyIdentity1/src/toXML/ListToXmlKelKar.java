@@ -47,7 +47,7 @@ public class ListToXmlKelKar {
        
        for(int i=0; i<daftarKeluarga.size();i++){
            Element elemen_keluarga = doc.createElement("TabelKeluargaKaryawan");
-           elemen_keluarga.removeAttribute("");
+           elemen_keluarga.setAttribute("NIK",""+daftarKeluarga.get(i).getNik());
            rootElement.appendChild(elemen_keluarga);
            
            Element fieldNik = doc.createElement("NIK");
