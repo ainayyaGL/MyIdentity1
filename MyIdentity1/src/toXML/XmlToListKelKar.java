@@ -46,7 +46,7 @@ public class XmlToListKelKar {
        doc.getDocumentElement().normalize();
        
        RootElemen = doc.getDocumentElement().getNodeName();
-       NodeList nList = doc.getElementsByTagName("keluarga");
+       NodeList nList = doc.getElementsByTagName("TabelKeluargaKaryawan");
 
        for (int i = 0; i < nList.getLength(); i++) {
           Node nNode = nList.item(i);
@@ -54,11 +54,11 @@ public class XmlToListKelKar {
           if (nNode.getNodeType() == Node.ELEMENT_NODE) {
              Element eElement = (Element) nNode;
              
-             Nik = eElement.getElementsByTagName("Nik").item(0).getTextContent();
-             NamaKel = eElement.getElementsByTagName("Nama Keluarga").item(0).getTextContent();
-             JKel = eElement.getElementsByTagName("Jenis Kelamin Keluarga").item(0).getTextContent();
-             sttKel = eElement.getElementsByTagName("Status Keluarga").item(0).getTextContent();
-             strTglLahir = eElement.getElementsByTagName("tglLahir").item(0).getTextContent();
+             Nik = eElement.getElementsByTagName("NIK").item(0).getTextContent();
+             NamaKel = eElement.getElementsByTagName("NamaKeluarga").item(0).getTextContent();
+             JKel = eElement.getElementsByTagName("JenisKelamin").item(0).getTextContent();
+             sttKel = eElement.getElementsByTagName("StatusKeluarga").item(0).getTextContent();
+             strTglLahir = eElement.getElementsByTagName("TanggalLahir").item(0).getTextContent();
              tglLahir = LocalDate.parse(strTglLahir);
              daftarKeluarga.add(new KeluargaKar(Nik, NamaKel, JKel, sttKel, tglLahir));
           }
