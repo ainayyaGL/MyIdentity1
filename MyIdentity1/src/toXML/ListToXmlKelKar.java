@@ -42,7 +42,7 @@ public class ListToXmlKelKar {
        DocumentBuilder builder = factory.newDocumentBuilder();
        Document doc = builder.newDocument();
        doc.setXmlStandalone(true);
-       Element rootElement = doc.createElement("daftarPendidikan");
+       Element rootElement = doc.createElement("daftarKeluarga");
        doc.appendChild(rootElement);
        
        for(int i=0; i<daftarKeluarga.size();i++){
@@ -54,19 +54,19 @@ public class ListToXmlKelKar {
            fieldNik.setTextContent(daftarKeluarga.get(i).getNik());
            elemen_keluarga.appendChild(fieldNik);
            
-           Element fieldNamaKel = doc.createElement("Nama Keluarga");
+           Element fieldNamaKel = doc.createElement("NamaKeluarga");
            fieldNamaKel.setTextContent(daftarKeluarga.get(i).getNamaKel());
            elemen_keluarga.appendChild(fieldNamaKel);
            
-           Element fieldJKel = doc.createElement("Jenis Kelamin");
+           Element fieldJKel = doc.createElement("JenisKelamin");
            fieldJKel.setTextContent(daftarKeluarga.get(i).getJKel());
            elemen_keluarga.appendChild(fieldJKel);
            
-           Element fieldsttKel = doc.createElement("Status Keluarga");
+           Element fieldsttKel = doc.createElement("StatusKeluarga");
            fieldsttKel.setTextContent(daftarKeluarga.get(i).getSttKel());
            elemen_keluarga.appendChild(fieldsttKel);
            
-           Element fieldtglLahir = doc.createElement("Tanggal Lahir");
+           Element fieldtglLahir = doc.createElement("TanggalLahir");
            fieldtglLahir.setTextContent(daftarKeluarga.get(i).getTglLahir().toString());
            elemen_keluarga.appendChild(fieldtglLahir);
        }
